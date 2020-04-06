@@ -31,8 +31,9 @@ const myDeck = {
 		return multipleCards;
 	},
 
-	shuffle(deck) {
-  		let count = this.deck.length;
+	shuffle() {
+		const {deck} = this;
+  		let count = deck.length;
   		while(count) {
     		deck.push(deck.splice(Math.floor(Math.random() * count), 1)[0]);
     		count -= 1;
