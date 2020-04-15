@@ -18,5 +18,9 @@ const timer = new Timer(durationInput, startButton, pauseButton, {
     },
     onComplete() {
         console.log("Timer completed");
+    },
+    remainingTenSeconds() {
+        circle.classList.add("blink_me")
     }
 });
+

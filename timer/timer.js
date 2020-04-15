@@ -8,6 +8,7 @@ class Timer {
             this.onStart = callbacks.onStart;
             this.onTick = callbacks.onTick;
             this.onComplete = callbacks.onComplete;
+            this.remainingTenSeconds = callbacks.remainingTenSeconds;
         }
         
 
@@ -33,11 +34,15 @@ class Timer {
             if (this.onComplete) {
                 this.onComplete();
             }
-        } else {
+        }else {
             this.timeRemaining = this.timeRemaining - 0.05;
             if (this.onTick) {
                 this.onTick(this.timeRemaining);
             }       
+        }
+
+        if (this.timeRemaining <= 10 && this.timeRemaining !==0) {
+            this.remainingTenSeconds();
         }
     }
 
@@ -47,5 +52,9 @@ class Timer {
 
     set timeRemaining(time) {
         this.durationInput.value = time.toFixed(2);
+    }
+
+    remainingTenSeconds = () => {
+        this.remainingTenSeconds();
     }
 }
