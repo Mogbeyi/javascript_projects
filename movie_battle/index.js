@@ -5,7 +5,8 @@ const fetchData = async (searchTerm) => {
             s: searchTerm 
         }
     });
-    return response.data.Search;
+    
+    return response.data.Error ? [] : response.data.Search;
 }
 
 const input = document.querySelector('input');
