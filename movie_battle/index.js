@@ -10,12 +10,15 @@ const fetchData = async (searchTerm) => {
 }
 
 createAutcomplete({
-    root: document.querySelector('.autocomplete')
+    root: document.querySelector('.autocomplete'),
+    renderOption(movie) {
+        const imgSrc = movie.Poster === "N/A" ? '' : movie.Poster;
+        return  `
+        <img src="${imgSrc}" />
+        ${movie.Title} (${movie.Year}) 
+    `;
+    }
 });
-
-createAutcomplete({
-    root: document.querySelector('.autocomplete-two')
-})
 
 const onMovieSelect = async movie => {
     const response = await axios.get('http://www.omdbapi.com/', {
